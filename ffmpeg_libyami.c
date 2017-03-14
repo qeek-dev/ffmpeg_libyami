@@ -57,9 +57,11 @@ int yami_transcode_init(InputStream *inst, OutputStream *ost)
         if ((ist->nb_filters > 1) ||
             !ist->dec || !ist->dec->pix_fmts)
             return 0;
+#if 0
         for (pix_fmt = ist->dec->pix_fmts; *pix_fmt != AV_PIX_FMT_NONE; pix_fmt++)
             if (*pix_fmt == AV_PIX_FMT_YAMI)
                 break;
+#endif
         if (*pix_fmt == AV_PIX_FMT_NONE)
             return 0;
 
