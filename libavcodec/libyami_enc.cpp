@@ -312,7 +312,7 @@ static int yami_enc_init(AVCodecContext *avctx)
     s->enc_frame_size = FFALIGN(avctx->width, 32) * FFALIGN(avctx->height, 32) * 3;
     s->enc_frame_buf = static_cast<uint8_t *>(av_mallocz(s->enc_frame_size));
 
-    #ifdef zero
+    #if 0
     /*avcc format copy sps and pps to extradata*/
     if (avctx->flags & AV_CODEC_FLAG_GLOBAL_HEADER) {
     #endif
@@ -327,7 +327,7 @@ static int yami_enc_init(AVCodecContext *avctx)
         avctx->extradata = (uint8_t *) av_mallocz(s->enc_out_buf.dataSize + AV_INPUT_BUFFER_PADDING_SIZE);
         memcpy(avctx->extradata, s->enc_out_buf.data, s->enc_out_buf.dataSize);
         avctx->extradata_size = s->enc_out_buf.dataSize;
-    #ifdef zero
+    #if 0
     }
     #endif
 
