@@ -57,19 +57,19 @@ int yami_transcode_init(InputStream *inst, OutputStream *ost)
         if ((ist->nb_filters > 1) ||
             !ist->dec || !ist->dec->pix_fmts)
             return 0;
-#if 0
+
         for (pix_fmt = ist->dec->pix_fmts; *pix_fmt != AV_PIX_FMT_NONE; pix_fmt++)
             if (*pix_fmt == AV_PIX_FMT_YAMI)
                 break;
-#endif
+
         if (*pix_fmt == AV_PIX_FMT_NONE)
             return 0;
-
+#if 0
         for (i = 0; i < nb_output_streams; i++)
             if (output_streams[i] != ost &&
                 output_streams[i]->source_index == ost->source_index)
                 return 0;
-
+#endif
         av_log(NULL, AV_LOG_VERBOSE, "Setting up libyami transcoding\n");
 
         e = av_dict_get(ost->encoder_opts, "flags", NULL, 0);
